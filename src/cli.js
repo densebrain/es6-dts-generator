@@ -2,7 +2,7 @@
 
 require('source-map-support').install()
 require('shelljs/global')
-require('./src/tools')
+require('./tools')
 global.log = console
 
 const fs = require('fs')
@@ -61,11 +61,11 @@ mkdir('-p',dtsPath)
 // the NODE_PATH needs to be updated before
 // the context is established for these
 // modules
-const Output = require('./src/Output').Output
+const Output = require('./Output').Output
 const output = new Output()
 
 // Generate the main module first
-const generate = require('./src/generate')
+const generate = require('./generate')
 generate(output,baseModuleName,null)
 
 // If recurse enabled then walk the children
