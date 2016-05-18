@@ -3,6 +3,6 @@
 		"es2015",
 		"stage-0"
 	],
-	"sourceMaps": true,
+	"sourceMaps": "both",
 	"plugins": ["transform-runtime"]
 }

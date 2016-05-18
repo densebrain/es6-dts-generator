@@ -19,6 +19,14 @@ const args = require('yargs')
 			'nested in a node_modules path, ' +
 			'remember, every dep has to be resolvable'
 	})
+
+	.option('disable-types',{
+		alias: 'dt',
+		type: 'boolean',
+		default:false,
+		describe: 'Name to use for the output module, will default to the ' +
+		'last part of the source path you provide'
+	})
 	.option('module',{
 		alias: 'm',
 		type: 'string',
@@ -45,6 +53,15 @@ const args = require('yargs')
 const es6Path = path.resolve(args.source)
 const baseModuleName = args.module || es6Path.split('/').pop()
 const recurse = args.r
+const disableTypes = args.dt
+
+// Make options globally available
+global.Options = {
+	es6Path,
+	baseModuleName,
+	recurse,
+	disableTypes
+}
 
 // Correct the node path
 addToNodePath(path.resolve(es6Path,'..'))
