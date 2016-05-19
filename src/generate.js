@@ -59,12 +59,28 @@ function addClass(outputMod,mod,key,clazz) {
 	return key
 }
 
+/**
+ * Add a variable to the output module
+ *
+ * @param outputMod
+ * @param mod
+ * @param key
+ * @returns {*}
+ */
 function addVar(outputMod,mod,key) {
 	key = getMemberName(outputMod,key)
 	outputMod.addVar(key)
 	return key
 }
 
+
+/**
+ * Get all sub member names, owned properties
+ * for a given value
+ *
+ * @param val
+ * @returns {Array}
+ */
 function getValMemberNames(val) {
 	let keys = Object.keys(val)
 	if (!keys || keys.length === 0) {
@@ -76,6 +92,15 @@ function getValMemberNames(val) {
 	return keys
 }
 
+/**
+ * Add a member to the provided output module
+ *
+ * @param outputMod
+ * @param mod
+ * @param key
+ * @param val
+ * @returns {*}
+ */
 function addMember(outputMod,mod,key,val) {
 	val = val || mod[key]
 	switch (inferType(val)) {
